@@ -50,10 +50,46 @@
         <div class="container">
             <div class="wthree-services-bottom-grids">
                 <p class="wow fadeInUp animated" data-wow-delay=".5s">List of services provided by us.</p>
+                {{-- <div class="bs-docs-example wow fadeInUp animated" data-wow-delay=".5s">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Service Image</th>
+                                <th>Package Name</th>
+                                <th>Description</th>
+                                <th>Price</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($services as $key => $service)
+                                <tr>
+                                    <td>{{ $key + 1 }}</td>
+            <td>
+                <img src="{{ asset($service->image) }}" alt="{{ $service->name }}"
+                    style="width:100px; height:100px; object-fit:cover">
+            </td>
+            <td>{{ $service->name }}</td>
+            <td>{{ $service->description }}</td>
+            <td>Rp.{{ number_format($service->price) }}</td>
+            <td>
+                @guest
+                <a href="{{ route('login') }}" class="btn btn-default">Book Services</a>
+                @else
+                <a href="{{ route('booking.create', $service->id) }}" class="btn btn-default">Book
+                    Services</a>
+                @endguest
+            </td>
+            </tr>
+            @endforeach
+            </tbody>
+            </table>
+        </div>
+        <div class="clearfix"> </div> --}}
 
 
-
-                <div class="row mt-5">
+                <div class="mt-5 row">
                     <div class="col-md-4">
                         <div class="card">
                             <div class="card-body">
