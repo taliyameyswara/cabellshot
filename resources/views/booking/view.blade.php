@@ -28,20 +28,8 @@
                         <tr>
                             <th>Email</th>
                             <td>{{ $booking->user->email }}</td>
-                            <th>Booking From</th>
-                            <td>{{ $booking->booking_from }}</td>
-                        </tr>
-                        <tr>
-                            <th>Booking To</th>
-                            <td>{{ $booking->booking_to }}</td>
                             <th>Number of Guest</th>
                             <td>{{ $booking->number_of_guest }}</td>
-                        </tr>
-                        <tr>
-                            <th>State</th>
-                            <td>{{ $booking->state->title }}</td>
-                            <th>City</th>
-                            <td>{{ $booking->city_name }}</td>
                         </tr>
                         <tr>
                             <th>Event Type</th>

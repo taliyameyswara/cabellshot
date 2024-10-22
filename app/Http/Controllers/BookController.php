@@ -58,8 +58,7 @@ class BookController extends Controller
     public function store(Request $request, $service_id)
     {
         $request->validate([
-            'booking_from' => 'required|date',
-            'booking_to' => 'required|date|after_or_equal:booking_from',
+            'booking_date' => 'required|date',
             'event_type_id' => 'required|integer|exists:event_types,id',
             'number_of_guest' => 'required|integer',
             'state_id' => 'required|integer|exists:states,id',
@@ -80,8 +79,7 @@ class BookController extends Controller
             'booking_number' => mt_rand(100000000, 999999999),
             'service_id' => $service_id,
             'user_id' => Auth::id(),
-            'booking_from' => $request->booking_from,
-            'booking_to' => $request->booking_to,
+            'booking_date' => $request->booking_date,
             'event_type_id' => $request->event_type_id,
             'number_of_guest' => $request->number_of_guest,
             'state_id' => $request->state_id,

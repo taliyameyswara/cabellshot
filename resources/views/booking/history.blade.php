@@ -37,7 +37,7 @@
                                     <td class="font-w600">{{ $booking->user->phone_number }}</td>
                                     <td class="font-w600">{{ $booking->user->email }}</td>
                                     <td class="font-w600">
-                                        <span class="badge badge-primary">{{ $booking->booking_from }}</span>
+                                        <span class="badge badge-primary">{{ $booking->booking_date }}</span>
                                     </td>
                                     {{-- <td class="font-w600">
                                         <span class="badge badge-primary">{{ $booking->booking_to }}</span>

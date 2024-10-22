@@ -16,14 +16,12 @@ return new class extends Migration
             $table->integer('booking_number')->nullable();
             $table->foreignId('service_id')->constrained('services')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->date('booking_from')->nullable();
-            $table->date('booking_to')->nullable();
+            $table->date('booking_date')->nullable();
             $table->foreignId('event_type_id')->constrained('event_types')->onDelete('cascade'); // Definisi foreign key
             $table->integer('number_of_guest')->nullable();
             $table->integer('state_id')->nullable();
             $table->string('city_name')->nullable();
             $table->mediumText('message')->nullable();
-            $table->timestamp('booking_date')->useCurrent()->nullable();
             $table->string('remark')->nullable();
             $table->string('status')->nullable();
             $table->timestamp('updation_date')->nullable()->useCurrentOnUpdate();

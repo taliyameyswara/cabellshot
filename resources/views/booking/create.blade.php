@@ -21,15 +21,9 @@
                             enctype="multipart/form-data">
                             @csrf
                             <div class="form-group row">
-                                <label class="col-form-label col-md-4">Booking From:</label>
+                                <label class="col-form-label col-md-4">Booking Date:</label>
                                 <div class="col-md-10">
-                                    <input type="date" class="form-control" name="booking_from" required>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-form-label col-md-4">Booking To:</label>
-                                <div class="col-md-10">
-                                    <input type="date" class="form-control" name="booking_to" required>
+                                    <input type="date" class="form-control" name="booking_date" required>
                                 </div>
                             </div>
 
