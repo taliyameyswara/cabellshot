@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/services', [HomeController::class, 'service'])->name('service');
-Route::get('/services/{eventType}', [HomeController::class, 'filterByEventType'])->name('service.filter');
+Route::get('/services/{eventType}', [HomeController::class, 'filterByEventType'])->name('services.filter');
 Route::get('/get-photographers/{event_type_id}', [PhotograperController::class, 'getUserByEventType']);
 
 

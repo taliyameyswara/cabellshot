@@ -48,7 +48,6 @@ class BookController extends Controller
     public function create($service_id)
     {
         $eventTypes = EventType::all();
-        $states = State::all();
         $service = Service::findOrFail($service_id);  // Ensure valid service is retrieved or fail gracefully
 
         return view('booking.create', compact('eventTypes', 'states', 'service'));
