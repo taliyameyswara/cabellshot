@@ -58,8 +58,8 @@ Route::middleware(['auth'])->group(callback: function () {
             Route::controller(ProfileController::class)->group(function () {
                 Route::get('/', 'profile')->name('index');
                 Route::put('/', 'update')->name('update');
-                Route::get('/change-password' , 'showChangePasswordForm')->name('change-password');
-                Route::post('/change-password' , 'changePassword')->name('change-password.update');
+                Route::get('/change-password', 'showChangePasswordForm')->name('change-password');
+                Route::post('/change-password', 'changePassword')->name('change-password.update');
             });
         });
 
@@ -83,6 +83,11 @@ Route::middleware(['auth'])->group(callback: function () {
         // Event Types
         Route::controller(EventTypeController::class)->prefix('event-types')->name('event-types.')->group(function () {
             Route::get('/', 'index')->name('index');
+
+            Route::get('detail/{id}', 'detail')->name('detail');
+            Route::post('addPhotographer/{id}', 'addPhotographer')->name('addPhotographer');
+            Route::delete('removePhotographer/{id}/{photographer_id}', 'removePhotographer')->name('removePhotographer');
+
             Route::get('/create', 'create')->name('create');
             Route::post('/', 'store')->name('store');
             Route::delete('/{id}', 'destroy')->name('destroy');

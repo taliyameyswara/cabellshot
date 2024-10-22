@@ -28,13 +28,21 @@
                                 <span class="badge badge-primary">{{ $event_type->created_at }}</span>
                             </td>
                             <td class="d-none d-sm-table-cell">
+                                <!-- Tombol Edit -->
+                                <button class="btn btn-sm btn-primary">
+                                    <a href="{{ route('admin.event-types.detail', $event_type->id) }}"
+                                        class="text-center text-white">Detail Fotografi</a>
+                                </button>
+
+                                <!-- Form Delete, menggunakan class d-inline-block agar sejajar dengan tombol Edit -->
                                 <form action="{{ route('admin.event-types.destroy', $event_type->id) }}" method="POST"
-                                    onsubmit="return confirm('Do you really want to Delete?');">
+                                    class="d-inline-block" onsubmit="return confirm('Do you really want to Delete?');">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger text-center">Delete</button>
+                                    <button type="submit" class="text-center btn btn-danger btn-sm">Delete</button>
                                 </form>
                             </td>
+
                         </tr>
                     @endforeach
                 </tbody>
