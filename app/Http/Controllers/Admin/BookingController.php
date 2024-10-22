@@ -69,7 +69,7 @@ class BookingController extends Controller
         $booking->remark = $request->remark;
         $booking->save();
 
-        return redirect()->route('bookings.detail', $id)->with('success', 'Booking updated successfully.');
+        return redirect()->route('admin.bookings.detail', $id)->with('success', 'Booking updated successfully.');
     }
 }
 

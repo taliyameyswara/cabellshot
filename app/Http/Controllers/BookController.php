@@ -59,7 +59,7 @@ class BookController extends Controller
     {
         $request->validate([
             'booking_from' => 'required|date',
-            // 'booking_to' => 'required|date|after_or_equal:booking_from',
+            'booking_to' => 'required|date|after_or_equal:booking_from',
             'event_type_id' => 'required|integer|exists:event_types,id',
             'number_of_guest' => 'required|integer',
             'state_id' => 'required|integer|exists:states,id',
@@ -81,7 +81,7 @@ class BookController extends Controller
             'service_id' => $service_id,
             'user_id' => Auth::id(),
             'booking_from' => $request->booking_from,
-            // 'booking_to' => $request->booking_to,
+            'booking_to' => $request->booking_to,
             'event_type_id' => $request->event_type_id,
             'number_of_guest' => $request->number_of_guest,
             'state_id' => $request->state_id,

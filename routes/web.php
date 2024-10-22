@@ -98,6 +98,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
         Route::get('/approved', 'approved')->name('approved');
         Route::get('/cancelled', 'cancelled')->name('cancelled');
         Route::get('/detail/{id}', 'detail')->name('detail');
+        Route::put('/update/{id}', 'update')->name('update');
     });
 
 
