@@ -2,28 +2,6 @@
 
 @section('styles')
     <style>
-        .table th,
-        .table td {
-            vertical-align: middle;
-            text-align: center;
-        }
-
-        .table-hover tbody tr:hover {
-            background-color: #f5f5f5;
-        }
-
-        .img-responsive {
-            border-radius: 5px;
-        }
-
-        .table-bordered {
-            border: 2px solid #ddd;
-        }
-
-        .table thead {
-            background-color: #f8f9fa;
-        }
-
         .btn-default {
             background-color: #007bff;
             color: white;
@@ -47,69 +25,44 @@
         </div>
     </div>
     <div class="about-top">
-        <div class="container">
-            <div class="wthree-services-bottom-grids">
-                <p class="wow fadeInUp animated" data-wow-delay=".5s">List of services provided by us.</p>
+        <div class="contact">
+            <div class="container">
+                <div class="wthree-services-bottom-grids">
+                    <p class="wow fadeInUp animated" data-wow-delay=".5s">Select a service category.</p>
+                    <div class="mt-5 row" style="display: flex; flex-wrap: wrap; justify-content: center;">
+                        @foreach (['Sports', 'Wedding', 'Event'] as $type)
+                            <div style="margin: 20px;">
+                                <a href="{{ route('services.filter', $type) }}"
+                                    style="text-decoration: none; color: inherit;">
+                                    <div class="service-card"
+                                        style="width: 300px; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); transition: transform 0.3s; display: flex; flex-direction: column; align-items: center;">
 
-                <div class="mt-5 row">
-                    @foreach (['Sport', 'Wedding', 'Event'] as $type)
-                        <div class="col-md-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">
-                                        <a href="{{ route('service', $type) }}"
-                                            style="text-decoration: none; color: inherit;">{{ $type }}</a>
-                                    </h5>
-                                </div>
+                                        @if ($type == 'Sports')
+                                            <img src="https://asset-a.grid.id/crop/0x0:0x0/x/photo/2023/06/13/ezgifcom-gif-makerjpg-20230613093534.jpg"
+                                                alt="{{ $type }} Image"
+                                                style="width: 100%; height: 200px; object-fit: cover;">
+                                        @elseif ($type == 'Wedding')
+                                            <img src="https://awsimages.detik.net.id/community/media/visual/2020/10/12/ilustrasi-pernikahan.jpeg?w=600&q=90"
+                                                alt="{{ $type }} Image"
+                                                style="width: 100%; height: 200px; object-fit: cover;">
+                                        @elseif ($type == 'Event')
+                                            <img src="https://youngontop.com/wp-content/uploads/2024/09/63ecdf6e6df724eab1f0e8ca_20230215T0132-25bece5c-5ab8-4c33-98c7-60ad2668054b.webp"
+                                                alt="{{ $type }} Image"
+                                                style="width: 100%; height: 200px; object-fit: cover;">
+                                        @endif
+
+                                        <div class="card-body" style="padding: 15px; text-align: center;">
+                                            <h5 class="card-title" style="margin: 0; font-size: 24px;">{{ $type }}
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
-                        </div>
-                    @endforeach
-                </div>
-
-                @if (isset($services) && $services->isNotEmpty())
-                    <div class="bs-docs-example wow fadeInUp animated" data-wow-delay=".5s">
-                        <table class="table table-bordered table-hover">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Service Image</th>
-                                    <th>Event Type</th>
-                                    <th>Package Name</th>
-                                    <th>Description</th>
-                                    <th>Price</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($services as $key => $service)
-                                    <tr>
-                                        <td>{{ $key + 1 }}</td>
-                                        <td>
-                                            <img src="{{ asset($service->image) }}" alt="{{ $service->name }}"
-                                                class="img-responsive" style="width:100px; height:100px; object-fit:cover">
-                                        </td>
-                                        <td>{{ $service->name }}</td>
-                                        <td>{{ $service->event->type }}</td>
-                                        <td>{{ $service->description }}</td>
-                                        <td>Rp.{{ number_format($service->price) }}</td>
-                                        <td>
-                                            @guest
-                                                <a href="{{ route('login') }}" class="btn btn-default">Book Services</a>
-                                            @else
-                                                <a href="{{ route('booking.create', $service->id) }}"
-                                                    class="btn btn-default">Book Services</a>
-                                            @endguest
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                        @endforeach
                     </div>
-                @else
-                    <div class="alert alert-info">No services available for the selected event type.</div>
-                @endif
-
+                </div>
             </div>
         </div>
+    </div>
     </div>
 @endsection

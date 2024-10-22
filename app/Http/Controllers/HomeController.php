@@ -57,15 +57,15 @@ class HomeController extends Controller
     }
     public function filterByEventType($eventType)
     {
-        $eventType = EventType::where('type', $eventType)->first();
+        // Ambil tipe acara dari database
+        $eventType = EventType::where('type', $eventType)->firstOrFail();
 
-        if (!$eventType) {
-            return redirect()->route('service')->with('error', 'Event Type not found.');
-        }
-
+        // Ambil layanan yang terkait dengan tipe acara tersebut
         $services = Service::where('event_type_id', $eventType->id)->get();
 
-        return view('service.filter', compact('services', 'eventType'));
+        // Kembalikan view dengan data layanan dan tipe acara
+        return view('services_filter', compact('services', 'eventType'));
     }
+
 
 }
