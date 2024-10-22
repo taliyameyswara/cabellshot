@@ -12,6 +12,8 @@
                     <th>Service Name</th>
                     <th class="d-none d-sm-table-cell">Service Price</th>
                     <th class="d-none d-sm-table-cell">Service Image</th>
+                    <th class="d-none d-sm-table-cell">Event Type</th>
+
                     <th class="d-none d-sm-table-cell">Creation Date</th>
                     <th class="d-none d-sm-table-cell" style="width: 20%;">Action</th>
                 </tr>
@@ -25,6 +27,7 @@
                         <td class="d-none d-sm-table-cell">
                             <img src="{{ asset($service->image) }}" width="100" height="100" style="object-fit:cover">
                         </td>
+                        <td class="d-none d-sm-table-cell">{{ htmlentities($service->event?->type) }}</td>
                         <td class="d-none d-sm-table-cell">
                             <span class="badge badge-primary">{{ htmlentities($service->created_at) }}</span>
                         </td>

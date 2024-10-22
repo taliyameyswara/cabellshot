@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\EventType;
 use App\Models\Service;
 use App\Services\FileService;
 use Exception;
@@ -26,7 +27,8 @@ class ServiceController extends Controller
 
     public function create()
     {
-        return view('admin.services.create');
+        $event_types = EventType::all();
+        return view('admin.services.create', compact('event_types'));
     }
 
     public function store(Request $request)
@@ -38,6 +40,7 @@ class ServiceController extends Controller
                 'serdes' => 'required|string',
                 'serprice' => 'required|numeric',
                 'serviceImage' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+                'event_type_id' => 'required|exists:event_types,id',
             ]);
 
             // Handle the image upload
@@ -52,6 +55,7 @@ class ServiceController extends Controller
             $service->description = $request->input('serdes');
             $service->price = $request->input('serprice');
             $service->image = $fileName;
+            $service->event_type_id = $request->input('event_type_id');
             $service->save();
 
             return redirect()->route('admin.services.index')->with('success', 'Service berhasil dibuat!');
@@ -63,7 +67,8 @@ class ServiceController extends Controller
     public function edit($id)
     {
         $service = Service::find($id);
-        return view('admin.services.edit', compact('service'));
+        $event_types = EventType::all();
+        return view('admin.services.edit', compact('service', 'event_types'));
     }
 
     public function update(Request $request, $id)
@@ -75,6 +80,7 @@ class ServiceController extends Controller
                 'serdes' => 'required|string',
                 'serprice' => 'required|numeric',
                 'serviceImage' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+                'event_type_id' => 'required|exists:event_types,id',
             ]);
 
             $service = Service::find($id);
@@ -89,6 +95,7 @@ class ServiceController extends Controller
             $service->name = $request->input('sername');
             $service->description = $request->input('serdes');
             $service->price = $request->input('serprice');
+            $service->event_type_id = $request->input('event_type_id');
             $service->save();
 
             return redirect()->route('admin.services.index')->with('success', 'Service updated successfully!');

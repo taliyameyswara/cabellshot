@@ -15,6 +15,18 @@
                         value="{{ old('sername', $service->name) }}" required>
                 </div>
 
+                <div class="form-group ">
+                    <label for="sername">Event Type:</label>
+                    {{-- <input type="text" class="form-control" name="sername" required> --}}
+                    <select name="event_type_id" id="" class="form-control">
+                        @foreach ($event_types as $event)
+                            <option value="{{ $event->id }}" @if ($event->id == $service->event_type_id) selected @endif>
+                                {{ $event->type }}</option>
+                            {{-- <option value="{{ $event->id }}">{{ $event->type }}</option> --}}
+                        @endforeach
+                    </select>
+                </div>
+
                 <div class="form-group">
                     <label for="serdes">Service Description</label>
                     <textarea class="form-control" name="serdes" id="serdes" required>{{ old('serdes', $service->description) }}</textarea>

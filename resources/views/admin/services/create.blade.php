@@ -26,6 +26,17 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label class="col-12" for="sername">Event Type:</label>
+                            <div class="col-12">
+                                {{-- <input type="text" class="form-control" name="sername" required> --}}
+                                <select name="event_type_id" id="" class="form-control">
+                                    @foreach ($event_types as $event)
+                                        <option value="{{ $event->id }}">{{ $event->type }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label class="col-12" for="serdes">Service Description:</label>
                             <div class="col-12">
                                 <textarea class="form-control" name="serdes" required></textarea>
@@ -47,7 +58,7 @@
                         <div class="form-group row">
                             <div class="col-12">
                                 <button type="submit" class="btn btn-alt-success">
-                                    <i class="fa fa-plus mr-5"></i> Add
+                                    <i class="mr-5 fa fa-plus"></i> Add
                                 </button>
                             </div>
                         </div>
