@@ -29,6 +29,9 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);
+Route::get('/forgot-password', [AuthController::class, 'showForgotPasswordForm'])->name('reset-password');
+Route::post('/reset-password', [AuthController::class, 'resetPassword'])->name('reset-password.submit');
+
 
 
 Route::middleware(['auth'])->group(callback: function () {

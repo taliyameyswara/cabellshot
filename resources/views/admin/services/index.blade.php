@@ -36,7 +36,9 @@
                                 <button type="submit" onclick="return confirm('Apakah Anda yakin ingin menghapus?');"
                                     class="btn btn-danger">Delete</button>
                             </form>
-                            <a href="{{ route('admin.services.edit', $service->id) }}" class="btn btn-primary">Update</a>
+                            <button class="btn btn-primary">
+                                <a class="text-white" href="{{ route('admin.services.edit', $service->id) }}">Update</a>
+                            </button>
                         </td>
                     </tr>
                 @endforeach

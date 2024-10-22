@@ -63,4 +63,33 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
         return redirect('/')->with('success', 'Berhasil Logout');
     }
+
+    public function showForgotPasswordForm()
+    {
+        return view('auth.reset-password'); // Ensure this view exists
+    }
+
+    public function resetPassword(Request $request)
+    {
+        // Validate the request
+        $request->validate([
+            'email' => 'required|email|exists:users,email',
+            'phone_number' => 'required|string|max:10',
+            'newpassword' => 'required|string|min:8|confirmed',
+        ]);
+
+        // Find the user by email
+        $user = User::where('email', $request->email)->first();
+
+        // Check if the phone number matches
+        if ($user->phone_number !== $request->phone_number) {
+            return back()->withErrors(['phone_number' => 'Phone number does not match our records.']);
+        }
+
+        // Update the user's password
+        $user->password = Hash::make($request->newpassword);
+        $user->save();
+
+        return redirect()->route('login')->with('success', 'Password has been reset successfully. Please log in.');
+    }
 }

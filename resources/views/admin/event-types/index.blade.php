@@ -32,7 +32,7 @@
                                     onsubmit="return confirm('Do you really want to Delete?');">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-primary">Delete</button>
+                                    <button type="submit" class="btn btn-danger text-center">Delete</button>
                                 </form>
                             </td>
                         </tr>

@@ -28,7 +28,7 @@
                             <input type="email" name="email" placeholder="E-mail" required>
                             <input type="password" name="password" placeholder="Password" required>
                             <div class="forgot">
-                                <a href="#">Forgot Password?</a>
+                                <a href="{{ route('reset-password') }}">Forgot Password?</a>
                             </div>
                             <button class="btn1">LOGIN NOW</button>
                         </form>
