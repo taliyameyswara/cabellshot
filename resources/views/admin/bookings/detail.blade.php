@@ -76,6 +76,15 @@
                             <th>Admin Remark</th>
                             <td>{{ $booking->remark ?: 'Not Updated Yet' }}</td>
                         </tr>
+                        <tr>
+                            <th>Payment Proof</th>
+                            <td>
+                                <a href="{{ asset($booking->payment_proof) }}" target="_blank"
+                                    class="text-white btn btn-primary">
+                                    Lihat Bukti
+                                    Pembayaran</a>
+                            </td>
+                        </tr>
                     </table>
 
                     @if ($booking->status == 'Pending')

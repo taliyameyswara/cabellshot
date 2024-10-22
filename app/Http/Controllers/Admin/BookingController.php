@@ -40,7 +40,7 @@ class BookingController extends Controller
     {
 
         $booking = Booking::with(['user', 'service', 'state', 'city'])
-                          ->findOrFail($id);
+            ->findOrFail($id);
 
         if (!$booking) {
             return redirect()->route('admin.bookings.new')->with('error', 'Booking not found.');
@@ -83,6 +83,4 @@ class BookingController extends Controller
 
         return view('admin.booking.filtered', compact('bookings'));
     }
-
 }
-

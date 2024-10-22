@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
                 'email' => 'anvi@gmail.com',
                 'password' => Hash::make('password'),
                 'role' => 'user', // Menandakan sebagai pengguna biasa
-            ],  
+            ],
             [
                 'name' => 'hkjhkj',
                 'phone_number' => '4579878687',
