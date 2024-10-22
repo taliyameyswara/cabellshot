@@ -118,7 +118,7 @@
                     </li>
 
                     <li>
-                        <a href="{{ route('admin.booking.search') }}"><i class="si si-magnifier"></i><span
+                        <a href="{{ route('admin.search-booking.index') }}"><i class="si si-magnifier"></i><span
                                 class="sidebar-mini-hide">Booking Search</span></a>
                     </li>
                 </ul>

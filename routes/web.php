@@ -4,17 +4,16 @@ use App\Http\Controllers\Admin\BookingController;
 use App\Http\Controllers\Admin\EventTypeController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\ProfileController;
-use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SettingsController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\UserProfileController;
-use App\Http\Controllers\Api\LocationController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\FilterDateController;
+use App\Http\Controllers\SearchBookingController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -45,9 +44,7 @@ Route::middleware(['auth'])->group(callback: function () {
 
     // Admin routes
     Route::middleware(['role:admin'])->prefix('admin')->name('admin.')->group(function () {
-        Route::get('/dashboard', function () {
-            return view('admin.dashboard');
-        })->name('dashboard');
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
         // Profile
         Route::prefix('profile')->name('profile.')->group(function () {
@@ -108,6 +105,9 @@ Route::middleware(['auth'])->group(callback: function () {
             Route::post('/', 'filter')->name('filter');
         });
 
-        Route::get('/booking/search', [BookingController::class, 'search'])->name('booking.search');
+        // Search
+        Route::controller(SearchBookingController::class)->prefix('search')->name('search-booking.')->group(function () {
+            Route::get('/', 'index')->name('index');
+        });
     });
 });

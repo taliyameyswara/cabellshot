@@ -49,6 +49,10 @@
     <script src="{{ asset('admin/js/pages/be_tables_datatables.js') }}" defer></script>
 
 
+    <script src="{{ asset('admin/js/plugins/chartjs/Chart.bundle.min.js') }}" type="text/javascript" defer></script>
+    <script src="{{ asset('assets/js/pages/be_pages_dashboard.js') }}" type="text/javascript" defer></script>
+
+
     @yield('js')
 
 
