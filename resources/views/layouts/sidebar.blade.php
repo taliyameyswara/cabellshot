@@ -113,7 +113,7 @@
                     </li>
 
                     <li>
-                        <a href="{{ route('admin.reports.dates') }}"><i class="si si-vector"></i><span
+                        <a href="{{ route('admin.filter-date.index') }}"><i class="si si-vector"></i><span
                                 class="sidebar-mini-hide">B/w Dates Report</span></a>
                     </li>
 

@@ -71,5 +71,25 @@ class BookingController extends Controller
 
         return redirect()->route('admin.bookings.detail', $id)->with('success', 'Booking updated successfully.');
     }
+
+    public function filter()
+    {
+        return view('admin.booking.filtered', compact('bookings'));
+    }
+
+
+    public function filtered(Request $request)
+    {
+
+        $request->validate([
+            'fromdate' => 'required|date',
+            'todate' => 'required|date|after_or_equal:fromdate',
+        ]);
+
+        $bookings = Booking::whereBetween('booking_date', [$request->fromdate, $request->todate])->get();
+
+        return view('admin.booking.filtered', compact('bookings'));
+    }
+
 }
 

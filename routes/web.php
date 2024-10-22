@@ -14,6 +14,7 @@ use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\Api\LocationController;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\FilterDateController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -42,7 +43,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/booking/view/{id}', [BookController::class, 'view'])->name('booking.view');
     Route::get('/cities', [CityController::class, 'index'])->name('cities');
 });
-
 
 
 // Admin routes
@@ -101,8 +101,11 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
         Route::put('/update/{id}', 'update')->name('update');
     });
 
+    // Filter
+    Route::controller(FilterDateController::class)->prefix('filter')->name('filter-date.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::post('/', 'filter')->name('filter');
+    });
 
-    // Reports and Search
-    Route::get('/reports/dates', [ReportController::class, 'betweenDates'])->name('reports.dates');
     Route::get('/booking/search', [BookingController::class, 'search'])->name('booking.search');
 });
