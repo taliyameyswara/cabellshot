@@ -18,18 +18,13 @@ class Booking extends Model
         return $this->belongsTo(Service::class);
     }
 
-    public function state()
-    {
-        return $this->belongsTo(State::class);
-    }
-
-    public function city()
-    {
-        return $this->belongsTo(City::class);
-    }
-
     public function eventType()
     {
         return $this->belongsTo(EventType::class);
+    }
+
+    public function photographer()
+    {
+        return $this->belongsTo(User::class, 'photographer_id');
     }
 }

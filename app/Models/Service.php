@@ -11,6 +11,6 @@ class Service extends Model
 
     public function event()
     {
-        return $this->belongsTo(EventType::class);
+        return $this->belongsTo(EventType::class, 'event_type_id', 'id');
     }
 }

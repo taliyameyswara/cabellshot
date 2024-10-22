@@ -67,5 +67,4 @@ class HomeController extends Controller
 
         return view('service.filter', compact('services', 'eventType'));
     }
-
 }
