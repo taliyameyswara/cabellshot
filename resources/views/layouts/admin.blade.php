@@ -30,7 +30,7 @@
     </div>
     <!-- END Page Container -->
 
-    <!-- Scripts -->
+
 
     <script src="{{ asset('admin/js/core/jquery.min.js') }}"></script>
     <script src="{{ asset('admin/js/core/popper.min.js') }}"></script>
@@ -40,13 +40,16 @@
     <script src="{{ asset('admin/js/core/jquery.appear.min.js') }}"></script>
     <script src="{{ asset('admin/js/core/jquery.countTo.min.js') }}"></script>
     <script src="{{ asset('admin/js/core/js.cookie.min.js') }}"></script>
-    <script src="{{ asset('admin/js/codebase.js') }}"></script>
+    <script src="{{ asset('admin/js/codebase.js') }}" defer></script>
+
+    <script src="{{ asset('admin/js/plugins/datatables/dataTables.bootstrap4.min.js') }}" type="text/javascript" defer>
+    </script>
+    <script src="{{ asset('admin/js/plugins/datatables/jquery.dataTables.min.js') }}" type="text/javascript" defer>
+    </script>
+    <script src="{{ asset('admin/js/pages/be_tables_datatables.js') }}" defer></script>
+
 
     @yield('js')
-    <script src="{{ asset('admin/js/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('admin/js/plugins/datatables/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('admin/js/pages/be_tables_datatables.js') }}"></script>
-
 
 
     @include('components.toast')

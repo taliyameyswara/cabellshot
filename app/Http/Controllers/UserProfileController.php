@@ -45,7 +45,6 @@ class UserProfileController extends Controller
     // Mengganti password
     public function changePassword(Request $request)
     {
-
         $request->validate([
             'currentpassword' => 'required|string',
             'newpassword' => 'required|string|confirmed',

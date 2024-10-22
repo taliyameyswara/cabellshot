@@ -31,7 +31,7 @@ Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('regi
 Route::post('/register', [AuthController::class, 'register']);
 
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth'])->group(callback: function () {
     Route::get('/profile', [UserProfileController::class, 'profile'])->name('profile');
     Route::post('/profile', [UserProfileController::class, 'update'])->name('profile.update');
     Route::get('/change-password', [UserProfileController::class, 'showChangePasswordForm'])->name('change-password');
@@ -42,70 +42,72 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/booking/store/{id}', [BookController::class, 'store'])->name('booking.store');
     Route::get('/booking/view/{id}', [BookController::class, 'view'])->name('booking.view');
     Route::get('/cities', [CityController::class, 'index'])->name('cities');
-});
+
+    // Admin routes
+    Route::middleware(['role:admin'])->prefix('admin')->name('admin.')->group(function () {
+        Route::get('/dashboard', function () {
+            return view('admin.dashboard');
+        })->name('dashboard');
+
+        // Profile
+        Route::prefix('profile')->name('profile.')->group(function () {
+            Route::controller(ProfileController::class)->group(function () {
+                Route::get('/', 'profile')->name('index');
+                Route::put('/', 'update')->name('update');
+            });
+        });
 
 
-// Admin routes
-Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('dashboard');
+        // Settings
+        Route::controller(SettingsController::class)->prefix('settings')->name('settings.')->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::post('/', 'update')->name('update');
+        });
 
-    // Profile
-    Route::controller(ProfileController::class)->prefix('profile')->name('profile.')->group(function () {
-        Route::get('/', 'profile')->name('index');
-        Route::put('/', 'update')->name('update');
+        // Services
+        Route::controller(ServiceController::class)->prefix('services')->name('services.')->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('/create', 'create')->name('create');
+            Route::post('/', 'store')->name('store');
+            Route::get('/{id}/edit', 'edit')->name('edit');
+            Route::put('/{id}',  'update')->name('update');
+            Route::delete('/{id}',  'destroy')->name('destroy');
+        });
+
+        // Event Types
+        Route::controller(EventTypeController::class)->prefix('event-types')->name('event-types.')->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('/create', 'create')->name('create');
+            Route::post('/', 'store')->name('store');
+            Route::delete('/{id}', 'destroy')->name('destroy');
+        });
+
+        // Pages
+        Route::controller(PageController::class)->prefix('pages')->name('pages.')->group(function () {
+            Route::get('/about', 'about')->name('about');
+            Route::put('/about', 'update_about')->name('update.about');
+
+            Route::get('/contact', 'contact')->name('contact');
+            Route::put('/contact', 'update_contact')->name('update.contact');
+        });
+
+
+        // Bookings
+        Route::controller(BookingController::class)->prefix('bookings')->name('bookings.')->group(function () {
+            Route::get('/all', 'all')->name('all');
+            Route::get('/new', 'new')->name('new');
+            Route::get('/approved', 'approved')->name('approved');
+            Route::get('/cancelled', 'cancelled')->name('cancelled');
+            Route::get('/detail/{id}', 'detail')->name('detail');
+            Route::put('/update/{id}', 'update')->name('update');
+        });
+
+        // Filter
+        Route::controller(FilterDateController::class)->prefix('filter')->name('filter-date.')->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::post('/', 'filter')->name('filter');
+        });
+
+        Route::get('/booking/search', [BookingController::class, 'search'])->name('booking.search');
     });
-
-    // Settings
-    Route::controller(SettingsController::class)->prefix('settings')->name('settings.')->group(function () {
-        Route::get('/', 'index')->name('index');
-        Route::post('/', 'update')->name('update');
-    });
-
-    // Services
-    Route::controller(ServiceController::class)->prefix('services')->name('services.')->group(function () {
-        Route::get('/', 'index')->name('index');
-        Route::get('/create', 'create')->name('create');
-        Route::post('/', 'store')->name('store');
-        Route::get('/{id}/edit', 'edit')->name('edit');
-        Route::put('/{id}',  'update')->name('update');
-        Route::delete('/{id}',  'destroy')->name('destroy');
-    });
-
-    // Event Types
-    Route::controller(EventTypeController::class)->prefix('event-types')->name('event-types.')->group(function () {
-        Route::get('/', 'index')->name('index');
-        Route::get('/create', 'create')->name('create');
-        Route::post('/', 'store')->name('store');
-        Route::delete('/{id}', 'destroy')->name('destroy');
-    });
-
-    // Pages
-    Route::controller(PageController::class)->prefix('pages')->name('pages.')->group(function () {
-        Route::get('/about', 'about')->name('about');
-        Route::put('/about', 'update_about')->name('update.about');
-
-        Route::get('/contact', 'contact')->name('contact');
-        Route::put('/contact', 'update_contact')->name('update.contact');
-    });
-
-
-    // Bookings
-    Route::controller(BookingController::class)->prefix('bookings')->name('bookings.')->group(function () {
-        Route::get('/all', 'all')->name('all');
-        Route::get('/new', 'new')->name('new');
-        Route::get('/approved', 'approved')->name('approved');
-        Route::get('/cancelled', 'cancelled')->name('cancelled');
-        Route::get('/detail/{id}', 'detail')->name('detail');
-        Route::put('/update/{id}', 'update')->name('update');
-    });
-
-    // Filter
-    Route::controller(FilterDateController::class)->prefix('filter')->name('filter-date.')->group(function () {
-        Route::get('/', 'index')->name('index');
-        Route::post('/', 'filter')->name('filter');
-    });
-
-    Route::get('/booking/search', [BookingController::class, 'search'])->name('booking.search');
 });

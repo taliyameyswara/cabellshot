@@ -13,7 +13,7 @@
                 <table class="table table-bordered table-striped table-vcenter js-dataTable-full-pagination">
                     <thead>
                         <tr>
-                            <th class="text-center"></th>
+                            <th class="text-center">-</th>
                             <th>Booking ID</th>
                             <th class="d-none d-sm-table-cell">Customer Name</th>
                             <th class="d-none d-sm-table-cell">Mobile Number</th>
@@ -53,19 +53,5 @@
                 </table>
             </div>
         </div>
-        <!-- END Dynamic Table Full Pagination -->
     </div>
-@endsection
-
-@section('js')
-    <script>
-        $(document).ready(function() {
-            $('.js-dataTable-full-pagination').DataTable({
-                paging: true,
-                searching: true,
-                ordering: true,
-                lengthChange: true,
-            });
-        });
-    </script>
 @endsection
