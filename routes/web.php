@@ -20,7 +20,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
-Route::get('/service', [HomeController::class, 'service'])->name('service');
+Route::get('/services', [HomeController::class, 'service'])->name('service');
+Route::get('/services/{eventType}', [HomeController::class, 'filterByEventType'])->name('service');
+
+
 Route::get('/mail', [HomeController::class, 'mail'])->name('mail');
 Route::post('/mail', [HomeController::class, 'submit_mail'])->name('mail.submit');
 

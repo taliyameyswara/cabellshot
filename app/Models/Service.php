@@ -8,4 +8,9 @@ class Service extends Model
 {
     protected $table = 'services';
     protected $fillable = ['name', 'description', 'price', 'image'];
+
+    public function event()
+    {
+        return $this->belongsTo(EventType::class);
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
+use App\Models\EventType;
 use App\Models\Page;
 use App\Models\Review;
 use App\Models\Service;
@@ -54,4 +55,17 @@ class HomeController extends Controller
 
         return redirect()->back()->with('success', 'Message sent successfully!');
     }
+    public function filterByEventType($eventType)
+    {
+        $eventType = EventType::where('type', $eventType)->first();
+
+        if (!$eventType) {
+            return redirect()->route('service')->with('error', 'Event Type not found.');
+        }
+
+        $services = Service::where('event_type_id', $eventType->id)->get();
+
+        return view('service.filter', compact('services', 'eventType'));
+    }
+
 }
