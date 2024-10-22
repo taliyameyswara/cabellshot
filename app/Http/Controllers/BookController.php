@@ -60,9 +60,8 @@ class BookController extends Controller
         $request->validate([
             'booking_date' => 'required|date',
             'event_type_id' => 'required|integer|exists:event_types,id',
+            'photographer_id' => 'required|integer|exists:users,id',
             'number_of_guest' => 'required|integer',
-            'state_id' => 'required|integer|exists:states,id',
-            'city_name' => 'required|string',
             'message' => 'required|string',
             'payment_proof' => 'required|mimes:jpeg,jpg,png,gif|max:2048'
         ]);
@@ -79,6 +78,7 @@ class BookController extends Controller
             'booking_number' => mt_rand(100000000, 999999999),
             'service_id' => $service_id,
             'user_id' => Auth::id(),
+            'photographer_id' => $request->photographer_id,
             'booking_date' => $request->booking_date,
             'event_type_id' => $request->event_type_id,
             'number_of_guest' => $request->number_of_guest,

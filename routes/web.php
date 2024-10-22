@@ -14,6 +14,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\FilterDateController;
+use App\Http\Controllers\PhotograperController;
 use App\Http\Controllers\SearchBookingController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,8 +22,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/services', [HomeController::class, 'service'])->name('service');
-Route::get('/services/{eventType}', [HomeController::class, 'filterByEventType'])->name('services.filter');
-
+Route::get('/services/{eventType}', [HomeController::class, 'filterByEventType'])->name('service.filter');
+Route::get('/get-photographers/{event_type_id}', [PhotograperController::class, 'getUserByEventType']);
 
 
 Route::get('/mail', [HomeController::class, 'mail'])->name('mail');

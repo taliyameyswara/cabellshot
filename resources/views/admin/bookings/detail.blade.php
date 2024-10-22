@@ -72,6 +72,11 @@
                                     Lihat Bukti
                                     Pembayaran</a>
                             </td>
+
+                            <th>Photographer</th>
+                            <td>
+                                {{ $booking->photographer->name }}
+                            </td>
                         </tr>
                     </table>
 

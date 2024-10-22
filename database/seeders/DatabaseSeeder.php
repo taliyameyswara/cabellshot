@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
             EventTypeSeeder::class,
             PhotographerSeeder::class,
             PageSeeder::class,
-            StateSeeder::class,
+            // StateSeeder::class,
             ServiceSeeder::class,
             BookingSeeder::class,
         ]);

@@ -16,8 +16,7 @@ class BookingSeeder extends Seeder
                 'user_id' => 3,
                 'event_type_id' => 1,
                 'number_of_guest' => 200,
-                'state_id' => 28,
-                'city_name' => 'Raikot',
+
                 'message' => 'rytriyu\r\nuytuyi\r\n\r\njoyuutuyfh',
                 'booking_date' => '2024-02-17',
                 'remark' => 'Approved',
@@ -33,8 +32,7 @@ class BookingSeeder extends Seeder
                 'user_id' => 4,
                 'event_type_id' => 2,
                 'number_of_guest' => 200,
-                'state_id' => 13,
-                'city_name' => 'Rohtak',
+
                 'message' => 'NA',
                 'booking_date' => '2024-02-20',
                 'remark' => 'Your booking is cancelled',
@@ -50,8 +48,7 @@ class BookingSeeder extends Seeder
                 'user_id' => 5,
                 'event_type_id' => 2,
                 'number_of_guest' => 25,
-                'state_id' => 31,
-                'city_name' => 'Coimbatore North',
+
                 'message' => 'NA',
                 'booking_date' => '2024-02-27',
                 'remark' => 'Approved',
@@ -67,8 +64,7 @@ class BookingSeeder extends Seeder
                 'user_id' => 5,
                 'event_type_id' => 1,
                 'number_of_guest' => 20,
-                'state_id' => 10,
-                'city_name' => 'Karol Bagh',
+
                 'message' => 'NA',
                 'booking_date' => '2024-03-14',
                 'remark' => 'Okai',
@@ -84,8 +80,7 @@ class BookingSeeder extends Seeder
                 'user_id' => 5,
                 'event_type_id' => 3,
                 'number_of_guest' => 4,
-                'state_id' => 5,
-                'city_name' => 'Islamnagar Aliganj',
+
                 'message' => 'Let\'s go',
                 'booking_date' => '2024-10-20',
                 'remark' => null,

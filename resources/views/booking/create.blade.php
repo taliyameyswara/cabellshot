@@ -40,39 +40,20 @@
                             </div>
 
                             <div class="form-group row">
-                                <label class="col-form-label col-md-4">Number of Guests:</label>
+                                <label class="col-form-label col-md-4">Choose Photographer:</label>
                                 <div class="col-md-10">
-                                    <input type="number" class="form-control" name="number_of_guest" required>
+                                    <select class="form-control" name="photographer_id" required>
+                                        <option value="">Select Photographer</option>
+                                        <!-- Option akan diisi oleh Ajax -->
+                                    </select>
                                 </div>
                             </div>
 
+
                             <div class="form-group row">
-                                <label class="col-form-label col-md-4">State:</label>
+                                <label class="col-form-label col-md-4">Number of Guests:</label>
                                 <div class="col-md-10">
-                                    <select class="form-control" id="state-dropdown" name="state_id" required>
-                                        <option value="">Choose State</option>
-                                        @foreach ($states as $state)
-                                            <option value="{{ $state->id }}">{{ $state->title }}</option>
-                                        @endforeach
-                                    </select>
-                                    @if ($errors->has('state_id'))
-                                        <div class="invalid-feedback">
-                                            {{ $errors->first('state_id') }}
-                                        </div>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-form-label col-md-4">City:</label>
-                                <div class="col-md-10">
-                                    <select class="form-control" id="city-dropdown" name="city_name" required>
-                                        <option value="" selected>Choose city</option>
-                                    </select>
-                                    @if ($errors->has('city_name'))
-                                        <div class="invalid-feedback">
-                                            {{ $errors->first('city_name') }}
-                                        </div>
-                                    @endif
+                                    <input type="number" class="form-control" name="number_of_guest" required>
                                 </div>
                             </div>
 
@@ -104,37 +85,29 @@
         </div>
     </div>
 
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <script>
         $(document).ready(function() {
-            $('#state-dropdown').change(function() {
-                var stateId = $(this).val();
-                console.log('State ID Selected:', stateId);
-
-                if (stateId) {
+            $('select[name="event_type_id"]').on('change', function() {
+                var eventTypeId = $(this).val();
+                if (eventTypeId) {
                     $.ajax({
-                        url: '{{ route('cities') }}',
+                        url: '/get-photographers/' + eventTypeId,
                         type: 'GET',
-                        data: {
-                            state_id: stateId
-                        },
+                        dataType: 'json',
                         success: function(data) {
-                            console.log('Cities Data:', data);
-                            $('#city-dropdown').empty();
-                            $('#city-dropdown').append(
-                                '<option value="" selected>Choose city</option>');
-                            $.each(data, function(id, name) {
-                                $('#city-dropdown').append('<option value="' + name +
-                                    '">' + name + '</option>');
+                            $('select[name="photographer_id"]').empty();
+                            $.each(data, function(key, value) {
+                                $('select[name="photographer_id"]').append(
+                                    '<option value="' + value.id + '">' + value
+                                    .name + '</option>');
                             });
-                        },
-                        error: function(jqXHR, textStatus, errorThrown) {
-                            console.error('AJAX Error:', textStatus, errorThrown);
                         }
                     });
-
                 } else {
-                    $('#city-dropdown').empty();
-                    $('#city-dropdown').append('<option value="" selected>Choose city</option>');
+                    $('select[name="photographer_id"]').empty();
                 }
             });
         });

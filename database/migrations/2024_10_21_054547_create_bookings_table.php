@@ -17,7 +17,12 @@ return new class extends Migration
             $table->foreignId('service_id')->constrained('services')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->date('booking_date')->nullable();
-            $table->foreignId('event_type_id')->constrained('event_types')->onDelete('cascade'); // Definisi foreign key
+            $table->foreignId('event_type_id')->constrained('event_types')->onDelete('cascade');
+
+            // unsigned integer
+            $table->unsignedBigInteger('photographer_id')->nullable();
+            $table->foreign('photographer_id')->references('id')->on('users')->onDelete('cascade');
+
             $table->integer('number_of_guest')->nullable();
             $table->integer('state_id')->nullable();
             $table->string('city_name')->nullable();
