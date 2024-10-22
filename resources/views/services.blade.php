@@ -68,7 +68,7 @@
                                     <td>{{ $key + 1 }}</td>
                                     <td>
                                         <img src="{{ asset($service->image) }}" alt="{{ $service->name }}"
-                                            class="img-responsive" style="width:100px; height:100px; object-fit:cover">
+                                            style="width:100px; height:100px; object-fit:cover">
                                     </td>
                                     <td>{{ $service->name }}</td>
                                     <td>{{ $service->description }}</td>

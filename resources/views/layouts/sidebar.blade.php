@@ -113,6 +113,20 @@
                     </li>
 
                     <li>
+                        <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-user"></i><span
+                                class="sidebar-mini-hide">Contact Us Queries</span></a>
+                        <ul>
+                            <li>
+                                <a href="{{ route('admin.contact-query.unread') }}">Unread Queries</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.contact-query.read') }}">Read Queries</a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    <li>
                         <a href="{{ route('admin.filter-date.index') }}"><i class="si si-vector"></i><span
                                 class="sidebar-mini-hide">B/w Dates Report</span></a>
                     </li>

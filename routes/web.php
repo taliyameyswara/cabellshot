@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\BookingController;
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\EventTypeController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\ProfileController;
@@ -51,6 +52,8 @@ Route::middleware(['auth'])->group(callback: function () {
             Route::controller(ProfileController::class)->group(function () {
                 Route::get('/', 'profile')->name('index');
                 Route::put('/', 'update')->name('update');
+                Route::get('/change-password' , 'showChangePasswordForm')->name('change-password');
+                Route::post('/change-password' , 'changePassword')->name('change-password.update');
             });
         });
 
@@ -98,6 +101,14 @@ Route::middleware(['auth'])->group(callback: function () {
             Route::get('/detail/{id}', 'detail')->name('detail');
             Route::put('/update/{id}', 'update')->name('update');
         });
+
+        // Contact
+        Route::controller(ContactController::class)->prefix('contact-query')->name('contact-query.')->group(function () {
+            Route::get('/unread', 'unread')->name('unread');
+            Route::get('/read', 'read')->name('read');
+            Route::get('/view/{id}', 'view')->name('view');
+        });
+
 
         // Filter
         Route::controller(FilterDateController::class)->prefix('filter')->name('filter-date.')->group(function () {

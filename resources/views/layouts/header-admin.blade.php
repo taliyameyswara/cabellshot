@@ -64,7 +64,7 @@
                     <a class="dropdown-item" href="{{ route('admin.profile.index') }}">
                         <i class="si si-user mr-5"></i> Profile
                     </a>
-                    <a class="dropdown-item" href="{{ route('admin.settings.index') }}">
+                    <a class="dropdown-item" href="{{ route('admin.profile.change-password') }}">
                         <i class="si si-wrench mr-5"></i> Settings
                     </a>
                     <div class="dropdown-divider"></div>

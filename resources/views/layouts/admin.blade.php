@@ -43,14 +43,11 @@
     <script src="{{ asset('admin/js/core/js.cookie.min.js') }}"></script>
     <script src="{{ asset('admin/js/codebase.js') }}" defer></script>
 
-
-
     <script src="{{ asset('admin/js/plugins/datatables/jquery.dataTables.min.js') }}" type="text/javascript" defer>
     </script>
     <script src="{{ asset('admin/js/plugins/datatables/dataTables.bootstrap4.min.js') }}" type="text/javascript" defer>
     </script>
     <script src="{{ asset('admin/js/pages/be_tables_datatables.js') }}" defer></script>
-
 
     <script src="{{ asset('admin/js/plugins/chartjs/Chart.bundle.min.js') }}" type="text/javascript" defer></script>
     <script src="{{ asset('assets/js/pages/be_pages_dashboard.js') }}" type="text/javascript" defer></script>
