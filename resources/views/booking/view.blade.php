@@ -14,12 +14,10 @@
             <div class="wthree-services-bottom-grids">
                 <p class="wow fadeInUp animated" data-wow-delay=".5s">View Your Booking Details.</p>
                 <div class="bs-docs-example wow fadeInUp animated" data-wow-delay=".5s">
-                    <table border="1"
-                        class="table table-bordered table-striped table-vcenter js-dataTable-full-pagination">
+                    <table class="table table-bordered table-striped table-vcenter">
                         <tr>
-                            <th colspan="5" style="text-align: center; font-size: 20px; color: blue;">
-                                Booking Number: {{ $booking->booking_number }}
-                            </th>
+                            <th colspan="5" style="text-align: center;font-size: 20px;color: blue;">Booking
+                                Number: {{ $booking->booking_number }}</th>
                         </tr>
                         <tr>
                             <th>Client Name</th>
@@ -33,7 +31,12 @@
                             <th>Booking From</th>
                             <td>{{ $booking->booking_from }}</td>
                         </tr>
-
+                        <tr>
+                            <th>Booking To</th>
+                            <td>{{ $booking->booking_to }}</td>
+                            <th>Number of Guest</th>
+                            <td>{{ $booking->number_of_guest }}</td>
+                        </tr>
                         <tr>
                             <th>State</th>
                             <td>{{ $booking->state->title }}</td>
@@ -42,7 +45,7 @@
                         </tr>
                         <tr>
                             <th>Event Type</th>
-                            <td>{{ $booking->event_type_id }}</td>
+                            <td>{{ $booking->eventType->type }}</td>
                             <th>Message</th>
                             <td>{{ $booking->message }}</td>
                         </tr>
@@ -54,26 +57,23 @@
                         </tr>
                         <tr>
                             <th>Service Price</th>
-                            <td>${{ $booking->service->price }}</td>
+                            <td>Rp{{ $booking->service->price }}</td>
                             <th>Apply Date</th>
                             <td>{{ $booking->booking_date }}</td>
                         </tr>
                         <tr>
                             <th>Order Final Status</th>
-                            <td>
-                                @if ($booking->status == 'Approved')
-                                    Approved
-                                @elseif ($booking->status == 'Cancelled')
-                                    Cancelled
-                                @elseif ($booking->status == '')
-                                    Not Response Yet
-                                @else
-                                    {{ $booking->status }}
+                            <td class="font-w600">
+                                @if ($booking->status == 'Pending')
+                                    <span class="badge badge-warning">No Processed yet</span>
+                                @elseif($booking->status == 'Approved')
+                                    <span class="badge badge-success">{{ $booking->status }}</span>
+                                @elseif($booking->status == 'Cancelled')
+                                    <span class="badge badge-danger">{{ $booking->status }}</span>
                                 @endif
                             </td>
                             <th>Admin Remark</th>
-                            <td>{{ $booking->status ? $booking->remark : 'Not Updated Yet' }}
-                            </td>
+                            <td>{{ $booking->remark ?: 'Not Updated Yet' }}</td>
                         </tr>
                     </table>
                 </div>

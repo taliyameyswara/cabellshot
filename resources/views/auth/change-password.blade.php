@@ -17,6 +17,13 @@
                         <h3>User Profile</h3>
                     </div>
                     <div class="agileinfo-contact-form-grid">
+                        @if (session('error'))
+                            <div class="mt-3 alert alert-danger">{{ session('error') }}</div>
+                        @endif
+
+                        @if (session('success'))
+                            <div class="mt-3 alert alert-success">{{ session('success') }}</div>
+                        @endif
                         <form method="POST" action="{{ route('change-password.update') }}">
                             @csrf
                             <div class="form-group row">
@@ -49,13 +56,7 @@
                             </div>
                         </form>
 
-                        @if (session('error'))
-                            <div class="mt-3 alert alert-danger">{{ session('error') }}</div>
-                        @endif
 
-                        @if (session('success'))
-                            <div class="mt-3 alert alert-success">{{ session('success') }}</div>
-                        @endif
                     </div>
                 </div>
                 <div class="clearfix"></div>
