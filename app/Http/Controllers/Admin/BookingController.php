@@ -39,7 +39,7 @@ class BookingController extends Controller
     public function detail($id)
     {
 
-        $booking = Booking::with(['user', 'service', 'state', 'city'])
+        $booking = Booking::with(['user', 'service',])
             ->findOrFail($id);
 
         if (!$booking) {

@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Booking;
 use App\Models\EventType;
 use App\Models\Service;
-use App\Models\State;
-use App\Models\City; // Import City model
 use App\Services\FileService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -31,7 +29,7 @@ class BookController extends Controller
     public function view($bookingid)
     {
         $user = Auth::user();
-        $booking = Booking::with('user', 'service', 'state', 'city')
+        $booking = Booking::with('user', 'service')
             ->where('user_id', $user->id)
             ->where('id', $bookingid)
             ->first(); // Ambil booking yang sesuai
@@ -50,7 +48,7 @@ class BookController extends Controller
         $eventTypes = EventType::all();
         $service = Service::findOrFail($service_id);  // Ensure valid service is retrieved or fail gracefully
 
-        return view('booking.create', compact('eventTypes', 'states', 'service'));
+        return view('booking.create', compact('eventTypes',  'service'));
     }
 
 
@@ -81,8 +79,7 @@ class BookController extends Controller
             'booking_date' => $request->booking_date,
             'event_type_id' => $request->event_type_id,
             'number_of_guest' => $request->number_of_guest,
-            'state_id' => $request->state_id,
-            'city_name' => $request->city_name,
+
             'message' => $request->message,
             'payment_proof' => $paymentProofPath,
             'status' => 'Pending'
