@@ -50,11 +50,11 @@
                         </form>
 
                         @if (session('error'))
-                            <div class="alert alert-danger mt-3">{{ session('error') }}</div>
+                            <div class="mt-3 alert alert-danger">{{ session('error') }}</div>
                         @endif
 
                         @if (session('success'))
-                            <div class="alert alert-success mt-3">{{ session('success') }}</div>
+                            <div class="mt-3 alert alert-success">{{ session('success') }}</div>
                         @endif
                     </div>
                 </div>
