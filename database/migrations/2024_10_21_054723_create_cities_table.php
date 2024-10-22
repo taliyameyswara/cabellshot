@@ -18,7 +18,6 @@ return new class extends Migration
             $table->timestamps();
             $table->foreignId('state_id')->constrained()->onDelete('cascade');
         });
-
     }
 
     /**

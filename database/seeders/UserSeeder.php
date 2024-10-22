@@ -23,14 +23,14 @@ class UserSeeder extends Seeder
                 'name' => 'Anvi',
                 'phone_number' => '9879878979',
                 'email' => 'anvi@gmail.com',
-                'password' => Hash::make('your_password_here'), // Ganti dengan password yang diinginkan
+                'password' => Hash::make('password'),
                 'role' => 'user', // Menandakan sebagai pengguna biasa
-            ],
+            ],  
             [
                 'name' => 'hkjhkj',
                 'phone_number' => '4579878687',
                 'email' => 'rewrewre@yutuy',
-                'password' => Hash::make('your_password_here'), // Ganti dengan password yang diinginkan
+                'password' => Hash::make('password'),
                 'role' => 'user',
             ],
             [
@@ -38,21 +38,21 @@ class UserSeeder extends Seeder
                 'name' => 'Reetu Singh',
                 'phone_number' => '5465465464',
                 'email' => 'reetu@gmail.com',
-                'password' => Hash::make('your_password_here'),
+                'password' => Hash::make('password'),
                 'role' => 'user',
             ],
             [
                 'name' => 'John Doe',
                 'phone_number' => '1234569879',
                 'email' => 'John@gmail.com',
-                'password' => Hash::make('your_password_here'),
+                'password' => Hash::make('password'),
                 'role' => 'user',
             ],
             [
                 'name' => 'Azka Zaviar',
                 'phone_number' => '1236985211',
                 'email' => 'azka@gmail.com',
-                'password' => Hash::make('your_password_here'),
+                'password' => Hash::make('password'),
                 'role' => 'user',
             ],
         ]);
