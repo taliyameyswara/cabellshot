@@ -5,7 +5,8 @@
     <title>Online CabellShots Booking System - Admin Dashboard</title>
 
     <link rel="stylesheet" id="css-main" href="{{ asset('admin/css/codebase.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('admin/js/plugins/datatables/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin/js/plugins/datatables/dataTables.bootstrap4.min.css') }}">
+
 </head>
 
 <body>
@@ -42,9 +43,11 @@
     <script src="{{ asset('admin/js/core/js.cookie.min.js') }}"></script>
     <script src="{{ asset('admin/js/codebase.js') }}" defer></script>
 
-    <script src="{{ asset('admin/js/plugins/datatables/dataTables.bootstrap4.min.js') }}" type="text/javascript" defer>
-    </script>
+
+
     <script src="{{ asset('admin/js/plugins/datatables/jquery.dataTables.min.js') }}" type="text/javascript" defer>
+    </script>
+    <script src="{{ asset('admin/js/plugins/datatables/dataTables.bootstrap4.min.js') }}" type="text/javascript" defer>
     </script>
     <script src="{{ asset('admin/js/pages/be_tables_datatables.js') }}" defer></script>
 
