@@ -44,7 +44,7 @@
                                     @endif
                                 </td>
                                 <td class="d-none d-sm-table-cell">
-                                    <button class="btn btn-primary text-center">
+                                    <button class="text-center btn btn-primary">
                                         <a class="text-white" href="{{ route('admin.bookings.detail', $booking->id) }}"
                                             target="_blank">View</a>
                                     </button>
